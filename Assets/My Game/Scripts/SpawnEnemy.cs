@@ -4,25 +4,29 @@ using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
 
-public class SpawnEnemy : MonoBehaviour
+namespace MyGames
 {
-    public GameObject slimePrefab;
-    public Transform spawnPosition;
-
-    void Start()
+    public class SpawnEnemy : MonoBehaviour
     {
-        // пытался сделать по таймеру но не вышло...
-        for (int i = 0; i < 4; i++)   // просто создаст разом 4 клона
-            EnemySpawn();
+        public GameObject slimePrefab;
+        public Transform spawnPosition;
+
+        void Start()
+        {
+            // пытался сделать по таймеру но не вышло...
+            for (int i = 0; i < 4; i++)   // просто создаст разом 4 клона
+                EnemySpawn();
+        }
+
+        void Update()
+        {
+
+        }
+
+        private void EnemySpawn()
+        {
+            var enemy = Instantiate(slimePrefab, spawnPosition.position, spawnPosition.rotation);
+        }
     }
 
-    void Update()
-    {
-        
-    }
-
-    private void EnemySpawn()
-    {
-        var enemy = Instantiate(slimePrefab, spawnPosition.position, spawnPosition.rotation);
-    }
 }
