@@ -8,6 +8,8 @@ namespace MyGames
     {
         private Vector3 _direction;
         public float speed = 2f;
+        public float speedRotate = 20f;
+        private bool _isSprint;
 
         public GameObject minePrefab;
         public Transform spawnPosition;
@@ -21,6 +23,8 @@ namespace MyGames
 
             _direction.x = Input.GetAxis("Horizontal");
             _direction.z = Input.GetAxis("Vertical");
+
+            _isSprint = Input.GetButton("Sprint");
         }
         private void FixedUpdate()
         {
@@ -30,6 +34,8 @@ namespace MyGames
                 SpawnShield();
             }
             Move(Time.fixedDeltaTime);
+
+            transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * speedRotate * Time.fixedDeltaTime, 0));
         }
         private void SpawnShield()
         {
@@ -38,7 +44,8 @@ namespace MyGames
         }
         private void Move(float delta)
         {
-            transform.position += _direction * speed * delta;
+            var fixedDirection = transform.TransformDirection(_direction.normalized);
+            transform.position += fixedDirection * (_isSprint ? speed * 2 : speed) * delta;
         }
     }
 

@@ -7,6 +7,7 @@ namespace MyGames
     public class Enemy : MonoBehaviour, ITakeDamage
     {
         [SerializeField] private Player _player;
+
         private float _durability = 10f;
         void Start()
         {

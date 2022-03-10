@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980790296529141810}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.006000519}
+  m_LocalPosition: {x: 0, y: 0, z: 1.001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3199895474379158211}
@@ -672,6 +672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  speedRotate: 20
   minePrefab: {fileID: 7857314373915275399, guid: c79cd14ad1de58d47bb3751cfe6df31d,
     type: 3}
   spawnPosition: {fileID: 1586834608109068355}
