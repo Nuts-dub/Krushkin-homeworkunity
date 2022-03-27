@@ -10,11 +10,13 @@ namespace MyGames
         public float speed = 2f;
         public float speedRotate = 20f;
         private bool _isSprint;
+        [SerializeField] private float _jumpForce = 10;
 
         public GameObject minePrefab;
         public Transform spawnPosition;
         private bool _isSpawnMine;
         public KeyCode keySpell1;
+        public KeyCode keySpell2;
 
         void Update()
         {
@@ -25,19 +27,22 @@ namespace MyGames
             _direction.z = Input.GetAxis("Vertical");
 
             _isSprint = Input.GetButton("Sprint");
+
+            if (Input.GetKeyDown(keySpell2))
+                GetComponent<Rigidbody>().AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
         private void FixedUpdate()
         {
             if (_isSpawnMine)
             {
                 _isSpawnMine = false;
-                SpawnShield();
+                SpawnMine();
             }
             Move(Time.fixedDeltaTime);
 
             transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * speedRotate * Time.fixedDeltaTime, 0));
         }
-        private void SpawnShield()
+        private void SpawnMine()
         {
             var mineObj = Instantiate(minePrefab, spawnPosition.position, spawnPosition.rotation);
             var mine = mineObj.GetComponent<Mine>();
