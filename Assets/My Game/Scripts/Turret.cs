@@ -18,18 +18,6 @@ namespace MyGames
             _player = FindObjectOfType<Player>();
         }
 
-        private void Update()
-        {
-            //Ray ray = new Ray(_spawnPosition.position, transform.forward);
-
-            //if (Physics.Raycast(ray, out RaycastHit hit, 6))
-            //    if (hit.collider.CompareTag("Player"))
-            //    {
-            //        if (_isFire)
-            //            Fire();
-            //    }
-        }
-
         void FixedUpdate()
         {
             var direction = _player.transform.position - transform.position;
@@ -46,13 +34,6 @@ namespace MyGames
                         Fire();
                     transform.rotation = Quaternion.LookRotation(stepRotate);
                 }
-            //if (Vector3.Distance(transform.position, _player.transform.position) < 6)
-            //{
-            //    //if (_isFire)
-            //    //    Fire();
-            //    transform.rotation = Quaternion.LookRotation(stepRotate);
-            //}
-            
         }
 
         private void Fire()

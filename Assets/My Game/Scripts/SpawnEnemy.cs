@@ -10,11 +10,12 @@ namespace MyGames
     {
         public GameObject slimePrefab;
         public Transform spawnPosition;
+        public int spawnCount;
 
         void Start()
         {
             // пытался сделать по таймеру но не вышло...
-            for (int i = 0; i < 4; i++)   // просто создаст разом 4 клона
+            for (int i = 0; i < spawnCount; i++)   // просто создаст разом 4 клона
                 EnemySpawn();
         }
 
