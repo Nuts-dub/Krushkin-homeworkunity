@@ -6,16 +6,22 @@ namespace MyGames
 {
     public class Door : MonoBehaviour
     {
-
         [SerializeField] private Transform _rotatePoint;
+        [SerializeField] private Animator _anim;
 
         private bool _isStopped;
 
+        private void Awake()
+        {
+            _anim = GetComponent<Animator>();
+        }
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player") && !_isStopped)
             {
-                _rotatePoint.Rotate(Vector3.up, 90);
+                _anim.SetBool("IsOpen", true);
+
+                //_rotatePoint.Rotate(Vector3.up, 90);
             }
         }
 
@@ -23,7 +29,9 @@ namespace MyGames
         {
             if (other.CompareTag("Player") && !_isStopped)
             {
-                _rotatePoint.Rotate(Vector3.up, -90);
+                _anim.SetBool("IsOpen", false);
+
+                //_rotatePoint.Rotate(Vector3.up, -90);
             }
         }
 
@@ -32,7 +40,8 @@ namespace MyGames
             if (other.CompareTag("Player"))
             {
                 if (Input.GetKeyDown(KeyCode.E))
-                    _isStopped = true;
+                    _anim.enabled = false;
+                    //_isStopped = true;
             }
         }
     }

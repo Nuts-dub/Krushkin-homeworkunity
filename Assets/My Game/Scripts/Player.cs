@@ -6,6 +6,8 @@ namespace MyGames
 {
     public class Player : MonoBehaviour
     {
+        [SerializeField] private Animator _anim;
+
         private Vector3 _direction;
         public float speed = 2f;
         public float speedRotate = 20f;
@@ -18,6 +20,11 @@ namespace MyGames
         public KeyCode keySpell1;
         public KeyCode keySpell2;
 
+        private void Awake()
+        {
+            _anim = GetComponent<Animator>();
+        }
+
         void Update()
         {
             if (Input.GetKeyDown(keySpell1))
@@ -25,6 +32,8 @@ namespace MyGames
 
             _direction.x = Input.GetAxis("Horizontal");
             _direction.z = Input.GetAxis("Vertical");
+
+            _anim.SetBool("IsWalk", _direction != Vector3.zero);
 
             _isSprint = Input.GetButton("Sprint");
 
