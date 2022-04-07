@@ -31,11 +31,6 @@ namespace MyGames
                 Destroy(gameObject);
             }
         }
-
-        public void Explode()
-        {
-
-        }
     }
 
 }

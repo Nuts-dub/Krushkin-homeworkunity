@@ -4,24 +4,27 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ChangeGameLevel : MonoBehaviour
+namespace MyGames
 {
-    [SerializeField] private Button _level1GameButton;
-    [SerializeField] private Button _level2GameButton;
-
-    private void Awake()
+    public class ChangeGameLevel : MonoBehaviour
     {
-        _level1GameButton.onClick.AddListener(Level1);
-        _level2GameButton.onClick.AddListener(Level2);
-    }
+        [SerializeField] private Button _level1GameButton;
+        [SerializeField] private Button _level2GameButton;
 
-    public void Level1()
-    {
-        SceneManager.LoadScene(1);
-    }
+        private void Awake()
+        {
+            _level1GameButton.onClick.AddListener(Level1);
+            _level2GameButton.onClick.AddListener(Level2);
+        }
 
-    public void Level2()
-    {
-        SceneManager.LoadScene(2);
+        public void Level1()
+        {
+            SceneManager.LoadScene(1);
+        }
+
+        public void Level2()
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 }

@@ -37,6 +37,7 @@ namespace MyGames
             {
                 Debug.Log("Hit!");
                 takeDamage.Hit(_damage);
+                Destroy(gameObject);
             }
         }
     }

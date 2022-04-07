@@ -6,45 +6,38 @@ using UnityEngine.UI;
 
 namespace MyGames
 {
-    public class GamePause : MonoBehaviour
+    public class LevelComplet : MonoBehaviour
     {
-        [SerializeField] private Button _quitGameButton;
         [SerializeField] private Button _exitMenuGameButton;
+        [SerializeField] private Button _nextLevelGameButton;
 
         public bool IsPaused = false;
-        public GameObject pauseMenuUI;
+        public GameObject completLevelUI;
 
         private void Awake()
         {
-            _quitGameButton.onClick.AddListener(() => { Application.Quit(); });
             _exitMenuGameButton.onClick.AddListener(MainMenu);
+            _nextLevelGameButton.onClick.AddListener(NextLevel);
         }
 
-        void Update()
+        private void OnTriggerEnter(Collider other)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (other.CompareTag("Player"))
             {
-                if (IsPaused)
-                {
-                    Continue();
-                }
-                else
-                {
-                    Pause();
-                }
+                Pause();
             }
         }
 
         public void Continue()
         {
-            pauseMenuUI.SetActive(false);
+            completLevelUI.SetActive(false);
             Time.timeScale = 1f;
             IsPaused = false;
         }
 
         public void Pause()
         {
-            pauseMenuUI.SetActive(true);
+            completLevelUI.SetActive(true);
             Time.timeScale = 0f;
             IsPaused = true;
         }
@@ -55,6 +48,10 @@ namespace MyGames
             Continue();
         }
 
-
+        public void NextLevel()
+        {
+            SceneManager.LoadScene(2);
+            Continue();
+        }
     }
 }
