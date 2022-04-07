@@ -7,6 +7,7 @@ namespace MyGames
     public class Player : MonoBehaviour
     {
         [SerializeField] private Animator _anim;
+        private readonly int IsWalk = Animator.StringToHash("IsWalk");
 
         private Vector3 _direction;
         public float speed = 2f;
@@ -33,7 +34,7 @@ namespace MyGames
             _direction.x = Input.GetAxis("Horizontal");
             _direction.z = Input.GetAxis("Vertical");
 
-            _anim.SetBool("IsWalk", _direction != Vector3.zero);
+            _anim.SetBool(IsWalk, _direction != Vector3.zero);
 
             _isSprint = Input.GetButton("Sprint");
 

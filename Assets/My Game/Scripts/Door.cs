@@ -10,6 +10,7 @@ namespace MyGames
         [SerializeField] private Animator _anim;
 
         private bool _isStopped;
+        private readonly int IsOpen = Animator.StringToHash("IsOpen");
 
         private void Awake()
         {
@@ -19,7 +20,7 @@ namespace MyGames
         {
             if (other.CompareTag("Player") && !_isStopped)
             {
-                _anim.SetBool("IsOpen", true);
+                _anim.SetBool(IsOpen, true);
 
                 //_rotatePoint.Rotate(Vector3.up, 90);
             }
@@ -29,7 +30,7 @@ namespace MyGames
         {
             if (other.CompareTag("Player") && !_isStopped)
             {
-                _anim.SetBool("IsOpen", false);
+                _anim.SetBool(IsOpen, false);
 
                 //_rotatePoint.Rotate(Vector3.up, -90);
             }
