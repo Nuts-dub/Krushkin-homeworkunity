@@ -127,3 +127,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 20
   spawnPosition: {fileID: 1496513062560882464}
+  _explosion: {fileID: 8780515553370446491, guid: ecb706dc703713d408c782b3913a8336,
+    type: 3}

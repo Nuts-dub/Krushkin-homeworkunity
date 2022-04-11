@@ -9,6 +9,8 @@ namespace MyGames
         [SerializeField] private Animator _anim;
         private readonly int IsWalk = Animator.StringToHash("IsWalk");
 
+        AudioSource _AudioSource;
+
         private Vector3 _direction;
         public float speed = 2f;
         public float speedRotate = 20f;
@@ -24,6 +26,7 @@ namespace MyGames
         private void Awake()
         {
             _anim = GetComponent<Animator>();
+            _AudioSource = GetComponent<AudioSource>();
         }
 
         void Update()
@@ -51,6 +54,18 @@ namespace MyGames
             Move(Time.fixedDeltaTime);
 
             transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * speedRotate * Time.fixedDeltaTime, 0));
+
+            if (_direction != Vector3.zero)
+            {
+                if (!_AudioSource.isPlaying)
+                {
+                    _AudioSource.Play();
+                }
+            }
+            else
+            {
+                _AudioSource.Stop();
+            }
         }
         private void SpawnMine()
         {

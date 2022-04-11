@@ -8,6 +8,7 @@ namespace MyGames
     {
         [SerializeField] private float _damage = 20;
         public Transform spawnPosition;
+        public GameObject _explosion;
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -28,6 +29,9 @@ namespace MyGames
                 }
                 Debug.Log("Hit!");
                 takeDamage.Hit(_damage);
+
+                Instantiate(_explosion, GetComponent<Rigidbody>().position, GetComponent<Rigidbody>().rotation);
+
                 Destroy(gameObject);
             }
         }
